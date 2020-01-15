@@ -22,3 +22,6 @@ Route::post('/addBarang', 'BarangController@add');
 Route::post('/updateBarang/{id}', 'BarangController@update');
 Route::get('/deleteBarang/{id}', 'BarangController@delete');
 Route::get('/getAllBarang', 'BarangController@getAll');
+
+//Transaksi
+Route::post('/checkoutBarang', 'CheckoutController@newTransaksi');

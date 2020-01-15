@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Helper\responses;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;    
 
 class AuthController extends Controller
 {
@@ -48,7 +48,8 @@ class AuthController extends Controller
         $crd = ['email' => $email, 'password' => $password];
 
         if(Auth::attempt($crd)){
-            return $helper->responseMessage('Berhasil Login');
+            $data = User::where('email', $email)->first();
+            return $helper->responseMessageData('Berhasil Login',$data);
         }
         else{
             return $helper->responseError('Email atau Password anda salah!');
